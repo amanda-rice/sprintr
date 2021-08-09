@@ -3,8 +3,18 @@ import { BadRequest, Forbidden } from '../utils/Errors'
 
 class ProjectsService {
   async getAll(query = {}) {
-    const projects = await dbContext.Project.find(query).populate('creator', 'name picture')
+    const projects = await dbContext.Project.find(query)
     return projects
+  }
+
+  async create(body) {
+    const project = await dbContext.Project.create(body)
+    return await this.getOne(project._id, body.creatorId)
+  }
+
+  async destroy(id, userId) {
+    await this.getOne(id, userId)
+    return await dbContext.Project.findByIdAndDelete(id)
   }
 
   async getOne(id, userId) {
@@ -13,15 +23,10 @@ class ProjectsService {
     if (!project) {
       throw new BadRequest('Invalid Id')
     }
-    if (project.creatorId.toString() !== userId) {
+    if (project.creator.id.toString() !== userId) {
       throw new Forbidden('This is not your project')
     }
     return project
-  }
-
-  async create(body) {
-    const project = await dbContext.Project.create(body)
-    return await this.getOne(project._id, body.creatorId)
   }
 }
 

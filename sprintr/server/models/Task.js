@@ -6,7 +6,7 @@ export const Task = new Schema(
   {
     status: { type: String, enum: ['pending', 'in-progress', 'review', 'done'], default: 'pending' },
     weight: { type: Number, required: true },
-    sprintId: { type: ObjectId, ref: 'Sprint', required: true },
+    sprintId: { type: ObjectId, ref: 'Sprint', required: false },
     projectId: { type: ObjectId, ref: 'Project', required: true },
     creatorId: { type: ObjectId, ref: 'Account', required: true },
     backlogItemId: { type: ObjectId, ref: 'BacklogItemId', required: true },
