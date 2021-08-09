@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 const ObjectId = Schema.Types.ObjectId
 
-export const Note = new Schema(
+export const Sprint = new Schema(
   {
     name: { type: String, required: true },
     startDate: { type: Date, required: true },
@@ -12,13 +12,13 @@ export const Note = new Schema(
     creatorId: { type: ObjectId, ref: 'Account', required: true }
   }, { timestamps: true, toJSON: { virtuals: true } }
 )
-Note.virtual('creator', {
+Sprint.virtual('creator', {
   localField: 'creatorId',
   ref: 'Account',
   foreignField: '_id',
   justOne: true
 })
-Note.virtual('project', {
+Sprint.virtual('project', {
   localField: 'projectId',
   ref: 'Project',
   foreignField: '_id',
