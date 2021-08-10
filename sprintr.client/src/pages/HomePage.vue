@@ -1,15 +1,29 @@
 <template>
   <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo">
-    <h1 class="my-5 bg-dark text-light p-3 rounded d-flex align-items-center">
-      <span class="mx-2 text-white">Vue 3 Starter</span>
-    </h1>
+    <p>{{projects}}</p>
   </div>
 </template>
 
 <script>
+import { computed, onMounted } from '@vue/runtime-core'
+import { AppState } from '../AppState'
+import Pop from '../utils/Notifier'
+import {projectsService} from '../services/ProjectsService'
+
 export default {
-  name: 'Home'
+  name: 'Home',
+    setup(){
+    onMounted(async () => {
+      try {
+        await projectsService.getAll()
+      } catch (error) {
+        Pop.toast(error, 'error')
+      }
+    })
+    return{
+      projects: computed(()=> AppState.projects)
+    }
+}
 }
 </script>
 
@@ -17,9 +31,8 @@ export default {
 .home{
   text-align: center;
   user-select: none;
-  > img{
+ } img{
     height: 200px;
     width: 200px;
   }
-}
 </style>
