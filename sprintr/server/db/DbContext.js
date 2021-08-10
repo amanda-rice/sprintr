@@ -14,7 +14,7 @@ class DbContext {
   BacklogItem = mongoose.model('BacklogItem', BacklogItemSchema);
   Note = mongoose.model('Note', NoteSchema);
   Sprint = mongoose.model('Sprint', SprintSchema);
-  Task = mongoose.model('Tasks', TaskSchema);
+  Task = mongoose.model('Task', TaskSchema);
 }
 
 export const dbContext = new DbContext()
