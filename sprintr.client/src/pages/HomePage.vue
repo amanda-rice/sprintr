@@ -13,13 +13,13 @@ import {projectsService} from '../services/ProjectsService'
 export default {
   name: 'Home',
     setup(){
-    onMounted(async () => {
-      try {
-        await projectsService.getAll()
-      } catch (error) {
-        Pop.toast(error, 'error')
-      }
-    })
+    // onMounted(async () => {
+    //   try {
+    //     await projectsService.getAll()
+    //   } catch (error) {
+    //     Pop.toast(error, 'error')
+    //   }
+    // })
     return{
       projects: computed(()=> AppState.projects)
     }
