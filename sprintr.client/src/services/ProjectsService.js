@@ -5,7 +5,6 @@ class ProjectsService {
   async getAll() {
     const res = await api.get('api/projects')
     AppState.projects = res.data
-    console.log(res)
   }
 
   async getByQuery(url = 'api/projects?query=', query = ' ') {
@@ -20,12 +19,21 @@ class ProjectsService {
 
   async createProject(project) {
     const res = await api.post('api/projects', project)
+    console.log(res)
+    AppState.activeProject = res.data
     await this.getAll()
+    return res.data.id
   }
 
   async destroy(id) {
     await api.delete('api/projects/' + id)
     AppState.projects = AppState.projects.filter(a => a.id !== id)
+  }
+
+  async getBacklogItemsByProjectId(projectId) {
+    const res = await api.get('api/projects/' + projectId + '/backlogItems')
+    AppState.projects = res.data
+    console.log(res, 'get backlog by ID')
   }
 }
 

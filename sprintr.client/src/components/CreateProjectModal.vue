@@ -57,21 +57,27 @@
 import $ from 'jquery'
 import Pop from '../utils/Notifier'
 import { projectsService } from '../services/ProjectsService'
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
+import {useRouter} from 'vue-router'
+import {AppState} from '../AppState'
+
 export default {
   name: 'Component',
   setup() {
+    const router = useRouter()
     const state = reactive({
-      createdProject: {}
+      createdProject: {},
+      thisProject: computed(()=> AppState.activeProject)
     })
 
     return {
       state,
       async createdProject() {
         try {
-          await projectsService.createProject(state.createdProject)
+          let id = await projectsService.createProject(state.createdProject)
           state.createdProject = {}
           $('#create-project').modal('hide')
+          router.push({name: 'Project', params:{projectId: id}})
           Pop.toast('Created Project Successfully', 'success')
         } catch (error) {
           Pop.toast(error, 'error')
