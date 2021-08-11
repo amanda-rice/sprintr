@@ -1,18 +1,18 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <p>{{projects}}</p>
+  <div class="container-fluid home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
+    <ProjectsThread :projects="projects" />
   </div>
 </template>
 
 <script>
-import { computed, onMounted } from '@vue/runtime-core'
+import { computed } from '@vue/runtime-core'
 import { AppState } from '../AppState'
-import Pop from '../utils/Notifier'
-import {projectsService} from '../services/ProjectsService'
+// import Pop from '../utils/Notifier'
+// import { projectsService } from '../services/ProjectsService'
 
 export default {
   name: 'Home',
-    setup(){
+  setup() {
     // onMounted(async () => {
     //   try {
     //     await projectsService.getAll()
@@ -20,10 +20,10 @@ export default {
     //     Pop.toast(error, 'error')
     //   }
     // })
-    return{
-      projects: computed(()=> AppState.projects)
+    return {
+      projects: computed(() => AppState.projects)
     }
-}
+  }
 }
 </script>
 
