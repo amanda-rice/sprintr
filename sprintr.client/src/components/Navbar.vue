@@ -4,7 +4,7 @@
       <div class="row justify-content-between">
         <div class="col-6">
           <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex align-items-center">
+      <div class="d-flex align-items-center text-light">
         <i class="fas fa-running fa-3x"></i>
         <h1 class="ml-2">Sprintr</h1>
       </div>
@@ -91,7 +91,7 @@ a:hover {
   text-transform: uppercase;
 }
 .nav-item .nav-link.router-link-exact-active{
-  color: var(--primary);
+  color: var(--light);
 }
 .font-light{
 color:white
