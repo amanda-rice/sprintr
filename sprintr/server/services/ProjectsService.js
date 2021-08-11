@@ -14,7 +14,9 @@ class ProjectsService {
 
   async destroy(id, userId) {
     await this.getOne(id, userId)
-    return await dbContext.Project.findByIdAndDelete(id)
+    await dbContext.Project.findByIdAndDelete(id)
+    await dbContext.Task.deleteMany({ projectId: id })
+    await dbContext.BacklogItem.deleteMany({ projectId: id })
   }
 
   async getOne(id, userId) {

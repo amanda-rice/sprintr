@@ -3,7 +3,7 @@ import { api } from './AxiosService'
 
 class ProjectsService {
   async getAll(url = 'api/projects') {
-    const res = await api.get(url, {})
+    const res = await api.get(url)
     AppState.projects = res.data
     console.log(res)
   }
