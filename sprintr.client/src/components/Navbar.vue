@@ -3,12 +3,12 @@
     <div class="container-fluid">
       <div class="row justify-content-between">
         <div class="col-6">
-          <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex align-items-center text-light">
-        <i class="fas fa-running fa-3x"></i>
-        <h1 class="ml-2">Sprintr</h1>
-      </div>
-          </router-link>
+          <div class="d-flex align-items-center">
+            <router-link class="navbar-brand d-flex text-light" :to="{ name: 'Home' }">
+              <i class="fas fa-running fa-3x"></i>
+              <h1 class="ml-2">Sprintr</h1>
+            </router-link>
+          </div>
         </div>
             <div class="col-6 text-right">
              <span class="navbar-text">
