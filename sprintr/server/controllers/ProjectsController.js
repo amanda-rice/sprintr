@@ -19,7 +19,7 @@ export class ProjectsController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      const projects = await projectsService.getAll(req.query)
+      const projects = await projectsService.getAll({ creatorId: req.userInfo.id })
       res.send(projects)
     } catch (error) {
       next(error)
