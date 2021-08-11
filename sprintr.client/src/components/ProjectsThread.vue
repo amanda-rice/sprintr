@@ -1,11 +1,13 @@
 <template>
-  <div class="row justify-content-between">
+  <div class="row justify-content-between comp-thread py-5">
     <div class="col-6">
-      <h3>Projects</h3>
+      <h2 class="text-primary">
+        Projects
+      </h2>
       <p>all of the projects created by {{ account.email }} </p>
     </div>
     <div class="col-6">
-      <button class="btn btn-large btn-outline-primary">
+      <button class="btn btn-large btn-outline-primary" data-toggle="modal" data-target="#create-project" title="Create Project">
         Create Project
       </button>
     </div>
@@ -20,6 +22,7 @@
     </div>
     <ProjectsComponent v-for="p in projects" :key="p.id" :project="p" />
   </div>
+  <CreateProjectModal />
 </template>
 
 <script>
@@ -40,3 +43,10 @@ export default {
   }
 }
 </script>
+
+<style>
+.comp-thread{
+  background-color: lavender;
+  box-shadow: 1px 1px 15px darkslategray;
+}
+</style>

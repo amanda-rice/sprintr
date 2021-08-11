@@ -2,8 +2,8 @@ import { AppState } from '../AppState'
 import { api } from './AxiosService'
 
 class ProjectsService {
-  async getAll(url = 'api/projects') {
-    const res = await api.get(url)
+  async getAll() {
+    const res = await api.get('api/projects')
     AppState.projects = res.data
     console.log(res)
   }
@@ -19,7 +19,7 @@ class ProjectsService {
   }
 
   async createProject(project) {
-    const res = await api.project('api/projects', project)
+    const res = await api.post('api/projects', project)
     await this.getAll()
   }
 
