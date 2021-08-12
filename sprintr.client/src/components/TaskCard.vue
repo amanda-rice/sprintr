@@ -5,9 +5,7 @@
         <p class="px-2">
           {{ task.name }}
         </p>
-        <p class="px-2">
-          delete
-        </p>
+        <i class="fa fa-trash px-2" aria-hidden="true"></i>
         <p class="px-2">
           edit
         </p>
