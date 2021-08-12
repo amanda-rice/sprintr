@@ -49,6 +49,6 @@ export default {
     width: 200px;
   }
 .glowing{
- box-shadow: 1px 1px 15px hotpink;
+ box-shadow: 1px 1px 15px darkslategray;
 }
 </style>

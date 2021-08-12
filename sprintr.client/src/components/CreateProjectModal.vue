@@ -42,7 +42,11 @@
               <button v-if="state.createdProject" type="submit" class="btn btn-primary mr-3">
                 Save
               </button>
-              <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal" @click="closeModal">
+              <button type="button"
+                      class="btn btn-secondary closeModal"
+                      data-dismiss="modal"
+                      @click="closeModal"
+              >
                 Close
               </button>
             </div>

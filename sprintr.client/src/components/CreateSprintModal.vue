@@ -68,8 +68,8 @@ import { projectsService } from '../services/ProjectsService'
 
 import { sprintsService } from '../services/SprintsService'
 import { reactive, computed } from 'vue'
-import {useRoute} from 'vue-router'
-import {AppState} from '../AppState'
+import { useRoute } from 'vue-router'
+import { AppState } from '../AppState'
 
 export default {
   name: 'Component',
@@ -78,16 +78,16 @@ export default {
     const state = reactive({
       projectId: route.params.projectId,
       createSprint: {},
-      thisProject: computed(()=> AppState.activeProject)
+      thisProject: computed(() => AppState.activeProject)
     })
 
     return {
       state,
       async createSprint() {
         try {
-          state.createSprint['projectId'] = state.projectId
+          state.createSprint.projectId = state.projectId
           console.log(state.createSprint)
-          let id = await sprintsService.createSprint(state.createSprint)
+          const id = await sprintsService.createSprint(state.createSprint)
           state.createSprint = {}
           $('#create-sprint').modal('hide')
           Pop.toast('Created Sprint Successfully', 'success')

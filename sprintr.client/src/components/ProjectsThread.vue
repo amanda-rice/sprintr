@@ -8,7 +8,7 @@
     </div>
     <div class="col-6">
       <button class="btn btn-large btn-primary" data-toggle="modal" data-target="#create-project" title="Create Project">
-        <i class="fas fa-plus"> Create Project</i>
+        <i class="fas fa-plus text-white"> Create Project</i>
       </button>
     </div>
     <div class="col-4">
