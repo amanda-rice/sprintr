@@ -1,6 +1,5 @@
 <template>
-  <div class="component">
-    <aside>
+  <aside>
       <router-link :to="{name: 'Project.Backlog'}">
             Backlog
       </router-link>
@@ -9,11 +8,10 @@
       </router-link>
             <button class="btn btn-lg btn-outline-info"> + Add New Sprint</button>
     </aside>
-    <div class="row">
-      {{state.param}}
+    
+    <div class="container-fluid">
       <router-view />
     </div>
-  </div>
 </template>
 
 <script>

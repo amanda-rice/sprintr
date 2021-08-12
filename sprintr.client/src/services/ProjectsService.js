@@ -12,9 +12,9 @@ class ProjectsService {
     AppState.projects = res.data.projects
   }
 
-  async getById(query) {
-    const res = await api.get('api/projects/')
-    AppState.projects = res.data.projects
+  async getById(id) {
+    const res = await api.get('api/projects/' + id)
+    AppState.activeProject = res.data
   }
 
   async createProject(project) {

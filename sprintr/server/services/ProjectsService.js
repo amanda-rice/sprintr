@@ -7,6 +7,14 @@ class ProjectsService {
     return projects
   }
 
+  async getById(id) {
+    const project = await dbContext.Project.findById(id)
+    if (!project) {
+      throw new BadRequest('Not a project')
+    }
+    return project
+  }
+
   async create(body) {
     const project = await dbContext.Project.create(body)
     return await this.getOne(project._id, body.creatorId)

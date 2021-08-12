@@ -1,5 +1,14 @@
 <template>
+  <div class="row">
+    <div class="col-md-6">
+      Backlog Items:
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-outline-primary" data-toggle="modal" data-target="#create-backlog-item" title="Create Project">Add Item</button>
+    </div>
+  </div>
   <BacklogItemsThread :backlogItems="backlogItems" />
+  <CreateBacklogItemModal />
 </template>
 
 
@@ -31,6 +40,13 @@ export default {
       async getByProjectId(){
         try {
           await projectsService.getBacklogItemsByProjectId(state.projectId)
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      },
+       async create(){
+        try {
+          await backlogItemsService.createBacklogItem(state.backlogItemId)
         } catch (error) {
           Pop.toast(error, 'error')
         }

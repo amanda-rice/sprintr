@@ -1,5 +1,5 @@
 <template>
-  <div class="row justify-content-between comp-thread py-5">
+  <div class="row justify-content-between py-5">
     <BacklogCard v-for="b in backlogItems" :key="b.id" :backlogItem="b" />
   </div>
 </template>
