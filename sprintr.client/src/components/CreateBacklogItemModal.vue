@@ -10,7 +10,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">
-            New Project
+            New Backlog Item
           </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -19,11 +19,11 @@
         <div class="modal-body">
           <form @submit.prevent="createBacklogItem">
             <div class="form-group">
-              <label class="pr-2" for="name">Project Name</label>
+              <label class="pr-2" for="name">Backlog Item Name</label>
               <input type="text"
                      id="name"
                      class="form-control"
-                     placeholder="Project Name..."
+                     placeholder="Backlog Item Name..."
                      maxlength="30"
                      v-model="state.createBacklogItem.name"
               >
