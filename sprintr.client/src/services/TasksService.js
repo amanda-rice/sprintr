@@ -16,5 +16,9 @@ class TasksService {
     await backlogItemsService.getTasksByProjectId(task.backlogId)
     return res.data.id
   }
+
+  async update(object) {
+    const res = await api.put(`api/tasks/${object.id}`)
+  }
 }
 export const tasksService = new TasksService()

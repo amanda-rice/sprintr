@@ -20,7 +20,7 @@
       </div>
       <div class="col-12">
         <div>
-          <select v-model="state.createdTask.sprintId" @change="setSprint">
+          <select v-model="state.updateTask.sprintId" @change="setSprint">
             <option v-for="(value, key) in sprint" :key="key">
               {{ value.id }}
             </option>
@@ -54,7 +54,7 @@ export default {
       await notesService.getNotesByTaskId(props.task.id)
     })
     const state = reactive({
-      // newSprintId: props.task.sprintId
+      updateTask: {}
     })
     onMounted(async() => {
       try {
@@ -69,7 +69,9 @@ export default {
       note: computed(() => AppState.notes[props.task.id]),
       async setSprint() {
         try {
-          await tasksService.update()
+          state.updateTask.id = props.task.id
+          state.updateTask.weight = props.task.weight
+          await tasksService.update(state.updateTask)
         } catch (error) {
           Pop.toast(error, 'error')
         }
