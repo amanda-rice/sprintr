@@ -6,7 +6,8 @@
         <router-link :to="{name: 'Project.Settings'}">
             Settings
       </router-link>
-            <button class="btn btn-lg btn-outline-info"> + Add New Sprint</button>
+          <button class="btn btn-outline-primary" data-toggle="modal" data-target="#create-sprint" title="Create New Sprint">Add Sprint</button>
+          <CreateSprintModal/>
     </aside>
     
     <div class="container-fluid">

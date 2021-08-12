@@ -7,7 +7,7 @@ export const Sprint = new Schema(
     name: { type: String, required: true },
     startDate: { type: String, required: true },
     endDate: { type: String, required: true },
-    isOpen: { type: Boolean, required: true },
+    isOpen: { type: Boolean, required: true, default: true },
     projectId: { type: ObjectId, ref: 'Project', required: true },
     creatorId: { type: ObjectId, ref: 'Account', required: true }
   }, { timestamps: true, toJSON: { virtuals: true } }

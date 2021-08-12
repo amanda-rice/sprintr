@@ -36,6 +36,13 @@ class ProjectsService {
     console.log(AppState.backlogItems, 'backlogitems')
     console.log(res, 'get backlog by ID')
   }
+
+  async getSprintsByProjectId(projectId) {
+    const res = await api.get('api/projects/' + projectId + '/sprints')
+    AppState.sprints = res.data
+    console.log(AppState.sprints, 'backlogitems')
+    console.log(res, 'get backlog by ID')
+  }
 }
 
 export const projectsService = new ProjectsService()
