@@ -1,13 +1,9 @@
 <template>
   <div class="row">
     <div class="col-md-6">
-      {{state.sprintId}}
+      {{state.backlogId}}
     </div>
-    <div class="col-md-6">
-      <h1>Made it to Sprint Page!</h1>
     </div>
-  </div>
-  <CreateBacklogItemModal />
 </template>
 
 
@@ -23,8 +19,8 @@ export default {
   setup() {
     const route = useRoute()
     const state = reactive({
-      projectId: route.params.projectId,
-      sprintId: computed(()=>route.params.sprintId)
+      projectId: computed(()=>route.params.projectId),
+      backlogId: computed(()=>route.params.backlogId)
     })
     onMounted(async() => {
     try {

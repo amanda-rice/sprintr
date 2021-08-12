@@ -60,8 +60,8 @@ import { projectsService } from '../services/ProjectsService'
 
 import { backlogItemsService } from '../services/BacklogItemsService'
 import { reactive, computed } from 'vue'
-import {useRoute} from 'vue-router'
-import {AppState} from '../AppState'
+import { useRoute } from 'vue-router'
+import { AppState } from '../AppState'
 
 export default {
   name: 'Component',
@@ -70,16 +70,16 @@ export default {
     const state = reactive({
       projectId: route.params.projectId,
       createBacklogItem: {},
-      thisProject: computed(()=> AppState.activeProject)
+      thisProject: computed(() => AppState.activeProject)
     })
 
     return {
       state,
       async createBacklogItem() {
         try {
-          state.createBacklogItem['projectId'] = state.projectId
+          state.createBacklogItem.projectId = state.projectId
           console.log(state.createBacklogItem)
-          let id = await backlogItemsService.createBacklogItem(state.createBacklogItem)
+          const id = await backlogItemsService.createBacklogItem(state.createBacklogItem)
           state.createBacklogItem = {}
           $('#create-backlog-item').modal('hide')
           Pop.toast('Created Project Successfully', 'success')
