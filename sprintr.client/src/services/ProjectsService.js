@@ -32,7 +32,8 @@ class ProjectsService {
 
   async getBacklogItemsByProjectId(projectId) {
     const res = await api.get('api/projects/' + projectId + '/backlogItems')
-    AppState.projects = res.data
+    AppState.backlogItems = res.data
+    console.log(AppState.backlogItems, 'backlogitems')
     console.log(res, 'get backlog by ID')
   }
 }

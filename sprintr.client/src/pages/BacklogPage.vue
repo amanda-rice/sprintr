@@ -1,5 +1,5 @@
 <template>
-  <BacklogCard />
+  <BacklogItemsThread :backlogItems="backlogItems" />
 </template>
 
 
@@ -26,6 +26,7 @@ export default {
   })
     return{
       state,
+      backlogItems: computed(()=>AppState.backlogItems),
       activeBacklog: computed(()=>AppState.activeBacklog),
       async getByProjectId(){
         try {
