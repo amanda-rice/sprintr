@@ -35,6 +35,11 @@ const routes = [
       path: 'settings',
       name: 'Project.Settings',
       component: loadPage('SettingsPage')
+    },
+    {
+      path: 'sprint',
+      name: 'Project.Sprint',
+      component: loadPage('SprintPage')
     }
     ]
   }
