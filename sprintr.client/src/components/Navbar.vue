@@ -8,8 +8,8 @@
               <svg xmlns="http://www.w3.org/2000/svg"
                    x="0px"
                    y="0px"
-                   width="96"
-                   height="96"
+                   width="70"
+                   height="70"
                    viewBox="0 0 226 226"
                    style=" fill:#000000;"
               ><g fill="none"
@@ -34,9 +34,9 @@
           </div>
         </div>
         <div class="col-md-6 text-right">
-          <span class="navbar-text">
+          <span class="navbar-text hoverable">
             <button
-              class="btn btn-outline-primary text-uppercase"
+              class="btn btn-outline-primary hoverable text-uppercase"
               @click="login"
               v-if="!user.isAuthenticated"
             >Login
