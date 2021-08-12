@@ -4,20 +4,22 @@
       Backlog Items:
     </div>
     <div class="col-md-6">
-      <button class="btn btn-outline-primary" data-toggle="modal" data-target="#create-backlog-item" title="Create Project">Add Item</button>
+      <button class="btn btn-outline-primary" data-toggle="modal" data-target="#create-backlog-item" title="Create Project">
+        Add Item
+      </button>
     </div>
   </div>
-  <BacklogItemsThread :backlogItems="backlogItems" />
+  <BacklogItemsThread :backlog-items="backlogItems" />
   <CreateBacklogItemModal />
 </template>
 
-
 <script>
 import { reactive, computed, onMounted } from 'vue'
-import {useRoute} from 'vue-router'
-import {AppState} from '../AppState'
-import {projectsService} from '../services/ProjectsService'
+import { useRoute } from 'vue-router'
+import { AppState } from '../AppState'
+import { projectsService } from '../services/ProjectsService'
 import Pop from '../utils/Notifier'
+import { backlogItemsService } from '../services/BacklogItemsService'
 
 export default {
   name: 'Component',
@@ -27,24 +29,24 @@ export default {
       projectId: route.params.projectId
     })
     onMounted(async() => {
-    try {
-      await projectsService.getBacklogItemsByProjectId(state.projectId)
-    } catch (error) {
-      Pop.toast(error, 'error')
-    }
-  })
-    return{
+      try {
+        await projectsService.getBacklogItemsByProjectId(state.projectId)
+      } catch (error) {
+        Pop.toast(error, 'error')
+      }
+    })
+    return {
       state,
-      backlogItems: computed(()=>AppState.backlogItems),
-      activeBacklog: computed(()=>AppState.activeBacklog),
-      async getByProjectId(){
+      backlogItems: computed(() => AppState.backlogItems),
+      activeBacklog: computed(() => AppState.activeBacklog),
+      async getByProjectId() {
         try {
           await projectsService.getBacklogItemsByProjectId(state.projectId)
         } catch (error) {
           Pop.toast(error, 'error')
         }
       },
-       async create(){
+      async create() {
         try {
           await backlogItemsService.createBacklogItem(state.backlogItemId)
         } catch (error) {
@@ -55,7 +57,6 @@ export default {
   }
 }
 </script>
-
 
 <style lang="scss" scoped>
 
