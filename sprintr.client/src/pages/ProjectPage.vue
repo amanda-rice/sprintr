@@ -17,7 +17,7 @@
       </div>
       <div class="col-12 pl-5 pr-0">
         <h4 class="glowing" v-for="(value, key) in sprints" :key="key">
-          <router-link :to="{name: 'Project.Sprint', params: {id: value.id}}">
+          <router-link :to="{name: 'Project.Sprint', params: {sprintId: value.id}}">
             {{ value.name }}
           </router-link>
         </h4>
