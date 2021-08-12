@@ -1,21 +1,18 @@
 <template>
   <div class="component">
-<h1>Settings!</h1>
-
+    <h1>Settings!</h1>
   </div>
 </template>
 
-
 <script>
 export default {
-  name: 'component',
-  setup(){
+  name: 'Component',
+  setup() {
     return {}
   },
-  components:{}
+  components: {}
 }
 </script>
-
 
 <style lang="scss" scoped>
 
