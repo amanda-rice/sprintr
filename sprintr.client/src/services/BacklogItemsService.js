@@ -1,5 +1,6 @@
 import { AppState } from '../AppState'
 import { api } from './AxiosService'
+import { projectsService } from './ProjectsService'
 
 class BacklogItemsService {
   async getAll() {
@@ -21,7 +22,7 @@ class BacklogItemsService {
     const res = await api.post('api/backlogItems', backlogItem)
     console.log(res, 'create backlog item')
     AppState.activeBacklogItem = res.data
-    await this.getAll()
+    await projectsService.getBacklogItemsByProjectId(backlogItem.projectId)
     return res.data.id
   }
 
