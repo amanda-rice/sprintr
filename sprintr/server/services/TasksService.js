@@ -4,7 +4,7 @@ import { BadRequest, Forbidden } from '../utils/Errors'
 class TasksService {
   async edit(body) {
     await this.getById(body.id)
-    const task = await dbContext.Task.findByIdAndUpdate(body.id, { name: body.name, status: body.status, weight: body.weight, sprintId: body.sprintId }, { new: true, runValidators: true })
+    const task = await dbContext.Task.findByIdAndUpdate(body.id, { status: body.status, sprintId: body.sprintId }, { new: true, runValidators: true })
     return task
   }
 

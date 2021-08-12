@@ -31,8 +31,8 @@ class SprintsService {
     AppState.sprints = AppState.sprints.filter(b => b.id !== id)
   }
 
-  async getSprintsBySprintId(sprintId) {
-    const res = await api.get('api/sprints/' + sprintId + '/sprints')
+  async getSprintsByProjectId(sprintId) {
+    const res = await api.get('api/projects/' + sprintId + '/sprints')
     AppState.sprints = res.data
     console.log(AppState.sprints, 'sprint')
     console.log(res, 'get sprint by ID')

@@ -1,6 +1,6 @@
 <template>
   <div class="modal fade"
-       id="create-note"
+       :id="'create-note'+ task.id"
        tabindex="-1"
        role="dialog"
        aria-labelledby="create-note"
@@ -17,15 +17,16 @@
           </button>
         </div>
         <div class="modal-body">
-          <form @submit.prevent="createdNote">
+          {{ task }}
+          <form @submit.prevent="createNote">
             <div class="form-group">
-              <label class="pr-2" for="name">New Note</label>
+              <label class="pr-2" for="body">New Note</label>
               <input type="text"
-                     id="name"
+                     id="body"
                      class="form-control"
                      placeholder="Add note..."
                      maxlength="100"
-                     v-model="state.createdNote.name"
+                     v-model="state.createdNote.body"
               >
             </div>
             <div>
@@ -48,35 +49,39 @@
 </template>
 
 <script>
-// import $ from 'jquery'
-// import Pop from '../utils/Notifier'
-// import { notesService } from '../services/NotesService'
+import $ from 'jquery'
+import Pop from '../utils/Notifier'
+import { notesService } from '../services/NotesService'
 import { reactive, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { AppState } from '../AppState'
 
 export default {
-  name: 'Component',
-  setup() {
+  props: {
+    task: {
+      type: Object,
+      required: true
+    }
+  },
+  setup(props) {
     // const router = useRouter()
     const state = reactive({
-      createdNote: {},
-      thisNote: computed(() => AppState.activeNote)
+      createdNote: {}
     })
 
     return {
-      state
-    //   async createdNote() {
-    //     try {
-    //       const id = await notesService.createNote(state.createdNote)
-    //       state.createdNote = {}
-    //       $('#create-note').modal('hide')
-    //       router.push({ name: 'Note', params: { noteId: id } })
-    //       Pop.toast('Created Note Successfully', 'success')
-    //     } catch (error) {
-    //       Pop.toast(error, 'error')
-    //     }
-    //   }
+      state,
+      async createNote() {
+        try {
+          state.createdNote.taskId = props.task.id
+          await notesService.create(state.createdNote)
+          state.createdNote = {}
+          $(`#create-note${props.task.id}`).modal('hide')
+          Pop.toast('Created Note Successfully', 'success')
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      }
     }
   },
   components: {}

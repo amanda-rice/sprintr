@@ -10,8 +10,14 @@
       <div class="col-3">
         <i class="fa text-right hoverable fa-trash text-secondary pl-4" aria-hidden="true" title="Delete Backlog Item" @click="destroy"></i>
       </div>
+      <div>
+        <button class="btn btn-primary" data-toggle="modal" :data-target="'#create-task' + backlogItem.id" title="Create New Task">
+          + Add Task
+        </button>
+      </div>
     </div>
     <TasksThread :tasks="tasks" />
+    <CreateTaskModal :backlog-item="backlogItem" />
   </div>
 </template>
 

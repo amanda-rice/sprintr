@@ -10,35 +10,38 @@
           edit
         </p>
       </div>
-      <!-- <select v-model="state.newSprintId" @change="setSprint">
-        <option :value="sprint.id" v-for="sprint in sprints" :key="sprint.id">
-          {{sprint.name}}
-        </option>
-      </select> -->
       <div class="col-12 d-flex">
         <p class="px-2">
-          Notes Button
-        </p>
-        <p class="px-2">
-          {{ task.weight }}
+          Task Weight: {{ task.weight }}
+          <button class="btn btn-outline-primary" data-toggle="modal" :data-target="'#create-note' + task.id" title="Create New Note">
+            Add Note
+          </button>
         </p>
       </div>
       <div class="col-12">
-        <button class="btn btn-outline-primary" data-toggle="modal" data-target="#create-note" title="Create New Note">
-          Add Note
-        </button>
+        <div>
+          <select v-model="state.createdTask.sprintId" @change="setSprint">
+            <option v-for="(value, key) in sprint" :key="key">
+              {{ value.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-12">
+        <NotesThread :note="note" />
       </div>
     </div>
   </div>
-  <CreateNoteModal />
+  <CreateNoteModal :task="task" />
 </template>
 
 <script>
-import { computed, reactive } from '@vue/runtime-core'
+import { computed, reactive, onMounted } from '@vue/runtime-core'
 import { AppState } from '../AppState'
 import Pop from '../utils/Notifier'
-// import { backlogItemsService } from '../services/BacklogItemsService'
-// import {tasksService} from '../services/TasksService'
+import { notesService } from '../services/NotesService'
+import { sprintsService } from '../services/SprintsService'
+import { tasksService } from '../services/TasksService'
 export default {
   props: {
     task: {
@@ -47,12 +50,30 @@ export default {
     }
   },
   setup(props) {
+    onMounted(async() => {
+      await notesService.getNotesByTaskId(props.task.id)
+    })
     const state = reactive({
       // newSprintId: props.task.sprintId
     })
+    onMounted(async() => {
+      try {
+        await sprintsService.getSprintsByProjectId(state.projectId)
+      } catch (error) {
+        Pop.toast(error, 'error')
+      }
+    })
     return {
-      state
-      // sprints: computed(()=> AppState.sprints)
+      state,
+      sprint: computed(() => AppState.sprints),
+      note: computed(() => AppState.notes[props.task.id]),
+      async setSprint() {
+        try {
+          await tasksService.update()
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      }
     }
   },
   components: {}
