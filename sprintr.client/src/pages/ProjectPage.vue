@@ -26,6 +26,10 @@
         <button class="btn btn-outline-primary" data-toggle="modal" data-target="#create-sprint" title="Create New Sprint">
           Add Sprint
         </button>
+      </div >
+      <div class="col-12 pl-5 pr-0 d-flex">
+        <i class="fa hoverable fa-trash text-secondary pl-4" aria-hidden="true" title="Delete Project" @click="destroy"></i>
+        <h4 class="glowing">Delete Project</h4>
       </div>
     </div>
 
@@ -39,7 +43,7 @@
 
 <script>
 import { reactive, computed, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { AppState } from '../AppState'
 import Pop from '../utils/Notifier'
 import { projectsService } from '../services/ProjectsService'
@@ -49,6 +53,7 @@ export default {
   name: 'Component',
   setup() {
     const route = useRoute()
+    const router = useRouter()
     const state = reactive({
       projectId: route.params.projectId
     })
@@ -74,7 +79,18 @@ export default {
         } catch (error) {
           Pop.toast(error, 'error')
         }
-      }
+      },
+      async destroy() {
+        try {
+          if (await Pop.confirm()) {
+            await projectsService.destroy(state.projectId)
+            Pop.toast('Deleted Project Successfully', 'success')
+            router.push({ name: 'Home' })
+          }
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      },
     }
   }
 }

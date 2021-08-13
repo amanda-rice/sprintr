@@ -17,7 +17,6 @@
           </button>
         </div>
         <div class="modal-body">
-          {{ task }}
           <form @submit.prevent="createNote">
             <div class="form-group">
               <label class="pr-2" for="body">New Note</label>
