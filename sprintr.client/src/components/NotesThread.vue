@@ -1,6 +1,5 @@
 <template>
-  <h3 class="text-center">Notes:</h3>
-  <div class="row justify-content-center pt-2 pb-4">
+  <div class="row justify-content-center pt-3 pb-3">
     <NoteCard v-for="n in note" :key="n.id" :note="n" />
   </div>
 </template>
