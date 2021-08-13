@@ -18,6 +18,23 @@
         </button>
       </div>
       <div class="col-12">
+        <select name="status" v-model="state.updateTask.status" @change="setStatus">
+            <option value="pending">
+              Pending
+            </option>
+            <option value="in-progress">
+              In-Progress
+            </option>
+            <option value="review">
+              Review
+            </option>
+            <option value="done">
+              Done
+            </option>
+          </select>
+      </div>
+      <div class="col-12">
+        <p>Status: {{currentTask.status}}</p>
         <div>
           <label for="sprint">Assign Sprint: </label>
           <select name="sprint" v-model="state.updateTask.sprintId" @change="setSprint">
@@ -65,15 +82,35 @@ export default {
         Pop.toast(error, 'error')
       }
     })
+    onMounted(async() => {
+      try {
+        await tasksService.getTasksByBacklogItemId(props.task.backlogItemId)
+      } catch (error) {
+        Pop.toast(error, 'error')
+      }
+    })
     return {
       state,
       sprint: computed(() => AppState.sprints),
       note: computed(() => AppState.notes[props.task.id]),
-      currentSprint: computed(()=> AppState.sprints.find(s=>s.id === props.task.sprintId)),
+      currentTask: computed(()=> AppState.tasks[props.task.backlogItemId].find(t=>t.id === props.task.id)),
       async setSprint() {
         try {
           state.updateTask.id = props.task.id
-          state.updateTask.weight = props.task.weight
+          state.updateTask.status = props.task.status
+          state.updateTask.backlogItemId = props.task.backlogItemId
+          console.log(state.updateTask, 'updateTask')
+          await tasksService.update(state.updateTask)
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      },
+      async setStatus() {
+        try {
+          state.updateTask.id = props.task.id
+          if(props.task.sprintId){
+            state.updateTask.sprintId = props.task.sprintId
+          }
           state.updateTask.backlogItemId = props.task.backlogItemId
           console.log(state.updateTask, 'updateTask')
           await tasksService.update(state.updateTask)

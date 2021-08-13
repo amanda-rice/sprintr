@@ -17,7 +17,7 @@ class TasksService {
 
   async update(object) {
     const res = await api.put(`api/tasks/${object.id}`, object)
-    AppState.tasks[object.backlogItemId].find(t => t.id === object.id)
+    await this.getTasksByBacklogItemId(object.backlogItemId)
   }
 }
 export const tasksService = new TasksService()
