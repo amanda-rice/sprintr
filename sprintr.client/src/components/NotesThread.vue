@@ -1,5 +1,6 @@
 <template>
-  <div class="row justify-content-between py-5">
+  <h3 class="text-center">Notes:</h3>
+  <div class="row justify-content-center pt-2 pb-4">
     <NoteCard v-for="n in note" :key="n.id" :note="n" />
   </div>
 </template>
