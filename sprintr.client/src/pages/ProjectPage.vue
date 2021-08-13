@@ -28,8 +28,8 @@
         </button>
       </div>
       <div class="col-12 pl-5 my-1 pr-0">
-        <button class="btn btn-secondary hoverable" @click="destroy">
-          <i class="fa fa-trash text-light" aria-hidden="true" title="Delete Project"></i>
+        <button class="btn btn-secondary hoverable text-dark" @click="destroy">
+          <i class="fa fa-trash text-dark" aria-hidden="true" title="Delete Project"></i>
           Delete Project
         </button>
       </div>

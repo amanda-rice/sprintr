@@ -3,9 +3,9 @@
     <div class="col-md-6">
       <h1>Backlog</h1>
     </div>
-    <div class="col-md-6">
-      <button class="btn btn-outline-primary" data-toggle="modal" data-target="#create-backlog-item" title="Create Project">
-        Add Item
+    <div class="col-md-6 mt-3">
+      <button class="btn btn-info text-white" data-toggle="modal" data-target="#create-backlog-item" title="Create Project">
+        + Add Item
       </button>
     </div>
   </div>
