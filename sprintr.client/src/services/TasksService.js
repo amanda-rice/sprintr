@@ -23,11 +23,14 @@ class TasksService {
     return res.data.id
   }
 
-  async update(object) {
+  async update(object, origId = '') {
     const res = await api.put(`api/tasks/${object.id}`, object)
     await this.getTasksByBacklogItemId(object.backlogItemId)
     if (object.sprintId) {
       await this.getTasksBySprintId(object.sprintId)
+    }
+    if (origId) {
+      await this.getTasksBySprintId(origId)
     }
   }
 
