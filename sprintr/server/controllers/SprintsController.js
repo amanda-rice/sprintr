@@ -10,6 +10,7 @@ export class SprintsController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
+      .get('/:id', this.getById)
       .get('/:id/tasks', this.getTasksBySprintId)
       .post('', this.create)
       .delete('/:id', this.destroy)
@@ -19,6 +20,15 @@ export class SprintsController extends BaseController {
     try {
       const sprints = await sprintsService.getAll(req.query)
       res.send(sprints)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getById(req, res, next) {
+    try {
+      const sprint = await sprintsService.getById(req.params.id)
+      res.send(sprint)
     } catch (error) {
       next(error)
     }

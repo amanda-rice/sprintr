@@ -13,9 +13,9 @@ class SprintsService {
     AppState.sprints = res.data.sprints
   }
 
-  async getById(query) {
-    const res = await api.get('api/sprints/')
-    AppState.sprints = res.data.sprints
+  async getById(id) {
+    const res = await api.get(`api/sprints/${id}`)
+    AppState.activeSprint = res.data
   }
 
   async createSprint(sprint) {

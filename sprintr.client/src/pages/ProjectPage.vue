@@ -43,6 +43,7 @@ import { useRoute } from 'vue-router'
 import { AppState } from '../AppState'
 import Pop from '../utils/Notifier'
 import { projectsService } from '../services/ProjectsService'
+import { tasksService } from '../services/TasksService'
 
 export default {
   name: 'Component',
@@ -54,6 +55,11 @@ export default {
     onMounted(async() => {
       try {
         await projectsService.getSprintsByProjectId(state.projectId)
+        let sprints = AppState.sprints
+        sprints.forEach(element => {
+          tasksService.getTasksBySprintId(element.id)
+        });
+        
       } catch (error) {
         Pop.toast(error, 'error')
       }
@@ -61,7 +67,14 @@ export default {
     return {
       state,
       activeProject: computed(() => AppState.activeProject),
-      sprints: computed(() => AppState.sprints)
+      sprints: computed(() => AppState.sprints),
+      async getSprints(id){
+        try {
+          await tasksService.getTasksBySprintId(id)
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      }
     }
   }
 }

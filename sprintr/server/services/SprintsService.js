@@ -12,6 +12,14 @@ class SprintsService {
     return await this.getOne(sprint._id, body.creatorId)
   }
 
+  async getById(id) {
+    const sprint = await dbContext.Sprint.findById(id)
+    if (!sprint) {
+      throw new BadRequest('Not a sprint')
+    }
+    return sprint
+  }
+
   async destroy(id, userId) {
     await this.getOne(id, userId)
     return await dbContext.Sprint.findByIdAndDelete(id)

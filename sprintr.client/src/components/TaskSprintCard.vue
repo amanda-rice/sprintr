@@ -56,7 +56,7 @@ export default {
     return {
       state,
       note: computed(() => AppState.notes[props.task.id]),
-      currentTask: computed(()=> AppState.tasks[props.task.sprintId].find(t=>t.id === props.task.id)),
+      currentTask: computed(()=> AppState.sprintTasks[props.task.sprintId].find(t=>t.id === props.task.id)),
       async setSprint() {
         try {
           state.updateTask.id = props.task.id
