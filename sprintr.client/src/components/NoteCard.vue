@@ -1,8 +1,14 @@
 <template>
-  <div class="col-12 bg-white d-flex">
-    <img :src="account.picture" :alt="account.name">
-    <div>{{ account.name }} says:</div>
-    <div class="mx-3">
+  <div class="col-12 py-2 bg-white d-flex">
+    <img :src="account.picture"
+         :alt="account.name"
+         height="50"
+         class="rounded-circle"
+    >
+    <h5 class="d-flex align-self-center">
+      {{ account.name }} :
+    </h5>
+    <div class="mx-3 d-flex align-self-center">
       {{ note.body }}
     </div>
   </div>

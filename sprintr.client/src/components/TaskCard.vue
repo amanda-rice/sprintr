@@ -2,27 +2,27 @@
   <div class="col-12 border border-secondary my-4">
     <div class="row">
       <div class="col-12 d-flex">
-        <p class="px-2">
-          {{ task.name }}
-        </p>
-        <i class="fa fa-trash px-2" aria-hidden="true"></i>
-        <p class="px-2">
-          edit
-        </p>
+        <h4 class="px-2">
+          Task: {{ task.name }}
+          <i class="fa fa-trash text-secondary px-2" aria-hidden="true" title="Delete Note"></i>
+        </h4>
       </div>
       <div class="col-12 d-flex">
         <p class="px-2">
-          Task Weight: {{ task.weight }}
-          <button class="btn btn-outline-primary" data-toggle="modal" :data-target="'#create-note' + task.id" title="Create New Note">
-            Add Note
-          </button>
+          <i class="fas fa-weight-hanging text-dark" title="Delete Task"></i> {{ task.weight }}
         </p>
+      </div>
+      <div class="col-12 mb-3">
+        <button class="btn btn-outline-primary" data-toggle="modal" :data-target="'#create-note' + task.id" title="Create New Note">
+          Add Note
+        </button>
       </div>
       <div class="col-12">
         <div>
-          <select v-model="state.updateTask.sprintId" @change="setSprint">
-            <option v-for="(value, key) in sprint" :key="key">
-              {{ value.id }}
+          <label for="sprints">Assign Sprint:</label>
+          <select name="sprints" v-model="state.updateTask.sprintId" @change="setSprint">
+            <option v-for="(value, key) in sprint" :key="key" :value="value.id">
+              {{ value.name }}
             </option>
           </select>
         </div>

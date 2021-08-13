@@ -41,11 +41,11 @@
             </div>
             <div>
               <select v-model="state.createdTask.sprintId" @change="setSprint">
-                <option v-for="(value, key) in sprint" :key="key">
-                  {{ value.id }}
+                <option v-for="(value, key) in sprint" :key="key" :value="value.id">
+                  {{ value.name }}
                 </option>
               </select>
-              <div>
+              <div class="mt-3">
                 <button v-if="state.createdTask" type="submit" class="btn btn-primary mr-3">
                   Save
                 </button>
