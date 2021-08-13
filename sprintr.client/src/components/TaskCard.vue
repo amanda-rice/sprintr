@@ -19,13 +19,14 @@
       </div>
       <div class="col-12">
         <div>
-          <label for="sprint">Assign Sprint: {{sprint}}</label>
+          <label for="sprint">Assign Sprint: </label>
           <select name="sprint" v-model="state.updateTask.sprintId" @change="setSprint">
             <option v-for="(value, key) in sprint" :key="key" :value="value.id">
               {{ value.name }}
             </option>
           </select>
-          {{task}}
+          <div v-if="task.sprintId">Current Sprint: {{sprint.find(s=>s.id === task.sprintId).name}}</div>
+          <div v-else>Not currently assigned to a sprint</div>
         </div>
       </div>
       <div class="col-12">
@@ -68,6 +69,7 @@ export default {
       state,
       sprint: computed(() => AppState.sprints),
       note: computed(() => AppState.notes[props.task.id]),
+      currentSprint: computed(()=> AppState.sprints.find(s=>s.id === props.task.sprintId)),
       async setSprint() {
         try {
           state.updateTask.id = props.task.id
