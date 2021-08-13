@@ -1,6 +1,6 @@
 <template>
   <div class="col-12 my-4">
-    <div class="row border border-secondary">
+    <div class="row">
       <div class="col-12 d-flex">
         <h4 class="p-2">
           Task: {{ task.name }}
@@ -17,7 +17,7 @@
         </button>
       </div>
       <div class="col-12">
-        <p>Status: {{currentTask.status}}</p>
+        <p>Status: {{ currentTask.status }}</p>
       </div>
       <div class="col-12">
         <NotesThread :note="note" />
@@ -34,7 +34,7 @@ import Pop from '../utils/Notifier'
 import { notesService } from '../services/NotesService'
 import { sprintsService } from '../services/SprintsService'
 import { tasksService } from '../services/TasksService'
-import {useRoute} from 'vue-router'
+import { useRoute } from 'vue-router'
 
 export default {
   props: {
@@ -50,12 +50,12 @@ export default {
     const route = useRoute()
     const state = reactive({
       projectId: route.params.projectId,
-      sprintId: computed(()=>route.params.sprintId)
+      sprintId: computed(() => route.params.sprintId)
     })
     return {
       state,
       note: computed(() => AppState.notes[props.task.id]),
-      currentTask: computed(()=> AppState.sprintTasks[props.task.sprintId].find(t=>t.id === props.task.id)),
+      currentTask: computed(() => AppState.sprintTasks[props.task.sprintId].find(t => t.id === props.task.id)),
       async setSprint() {
         try {
           state.updateTask.id = props.task.id
@@ -66,7 +66,7 @@ export default {
         } catch (error) {
           Pop.toast(error, 'error')
         }
-      },
+      }
     }
   },
   components: {}

@@ -4,7 +4,7 @@
       <h1>Backlog</h1>
     </div>
     <div class="col-md-6 mt-3">
-      <button class="btn btn-info text-white" data-toggle="modal" data-target="#create-backlog-item" title="Create Project">
+      <button class="btn btn-info text-white" data-toggle="modal" data-target="#create-backlog-item" title="Create Backlog Item">
         + Add Item
       </button>
     </div>

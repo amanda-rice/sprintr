@@ -28,8 +28,8 @@
         </button>
       </div>
       <div class="col-12 pl-5 my-1 pr-0">
-        <button class="btn btn-secondary hoverable text-dark" @click="destroy">
-          <i class="fa fa-trash text-dark" aria-hidden="true" title="Delete Project"></i>
+        <button class="btn btn-ponk hoverable text-dark" @click="destroy" title="Delete Project">
+          <i class="fa fa-trash text-dark" aria-hidden="true"></i>
           Delete Project
         </button>
       </div>
@@ -104,6 +104,10 @@ h1{
 }
 aside{
   min-width: 15vw
+}
+
+.btn-ponk{
+  background-color: #fbadcf;
 }
 
 </style>

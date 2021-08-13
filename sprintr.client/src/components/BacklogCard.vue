@@ -1,5 +1,5 @@
 <template>
-  <div class="col-11 py-5 my-3 border snow border-info">
+  <div class="col-11 py-5 my-3 border snow">
     <div class="row bg-light">
       <div class="col-6">
         <h1>Backlog Item: {{ backlogItem.name }}</h1>
@@ -12,8 +12,8 @@
         </h2>
       </div>
       <div class="col-6 mt-3">
-        <button class="btn btn-secondary text-dark hoverable mx-2" @click="destroy">
-          <i class="fa fa-trash text-dark" title="Delete Backlog Item"></i>
+        <button class="btn btn-ponk text-dark hoverable mx-2" @click="destroy" title="Delete Backlog Item">
+          <i class="fa fa-trash text-dark"></i>
           Delete Item
         </button>
         <button class="btn btn-info text-white mx-2" data-toggle="modal" :data-target="'#create-task' + backlogItem.id" title="Create New Task">
@@ -86,6 +86,10 @@ export default {
 <style lang="scss" scoped>
 .snow{
   background-color: snow;
+}
+
+.btn-ponk{
+  background-color: #fbadcf;
 }
 
 h1{
