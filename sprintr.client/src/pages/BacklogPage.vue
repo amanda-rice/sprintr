@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-md-6">
-      Backlog Items:
+      <h1>Backlog</h1>
     </div>
     <div class="col-md-6">
       <button class="btn btn-outline-primary" data-toggle="modal" data-target="#create-backlog-item" title="Create Project">

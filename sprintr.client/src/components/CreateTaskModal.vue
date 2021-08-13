@@ -18,7 +18,6 @@
         </div>
         <div class="modal-body">
           <form @submit.prevent="createTask">
-            {{ backlogItem.id }}
             <div class="form-group">
               <label class="pr-2" for="name">New Task</label>
               <input type="text"

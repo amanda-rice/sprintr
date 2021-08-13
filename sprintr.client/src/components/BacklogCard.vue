@@ -3,7 +3,7 @@
     <div class="row bg-light">
       
       <div class="col-3">
-       <h1>{{ backlogItem.name }}</h1>
+       <h2>{{ backlogItem.name }}</h2>
        <p>Backlog Items Weight: {{totalWeight}}</p>
       </div>
       <div class="col-3">
