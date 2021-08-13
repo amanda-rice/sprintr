@@ -1,19 +1,22 @@
 <template>
-  <div class="col-11 py-5 my-3 border border-primary">
+  <div class="col-11 py-5 my-3 border snow border-info">
     <div class="row bg-light">
-      
-      <div class="col-3">
-       <h2>{{ backlogItem.name }}</h2>
-       <p>Backlog Items Weight: {{totalWeight}}</p>
+      <div class="col-6">
+        <h1>Backlog Item: {{ backlogItem.name }}</h1>
+        <h2>
+          <i class="fas fa-weight-hanging text-dark"></i>
+          Total Backlog Weight: {{ totalWeight }}
+          <div class="mt-1">
+            {{ completed.length }} / {{ tasks.length }} Tasks Completed
+          </div>
+        </h2>
       </div>
-      <div class="col-3">
-        {{ completed.length }} / {{ tasks.length }} Tasks Completed
-      </div>
-      <div class="col-3">
-        <i class="fa text-right hoverable fa-trash text-secondary pl-4" aria-hidden="true" title="Delete Backlog Item" @click="destroy"></i>
-      </div>
-      <div>
-        <button class="btn btn-primary" data-toggle="modal" :data-target="'#create-task' + backlogItem.id" title="Create New Task">
+      <div class="col-6 mt-3">
+        <button class="btn btn-secondary text-dark hoverable mx-2" @click="destroy">
+          <i class="fa fa-trash text-dark" title="Delete Backlog Item"></i>
+          Delete Item
+        </button>
+        <button class="btn btn-info text-white mx-2" data-toggle="modal" :data-target="'#create-task' + backlogItem.id" title="Create New Task">
           + Add Task
         </button>
       </div>
@@ -59,7 +62,7 @@ export default {
         const tasks = AppState.tasks[props.backlogItem.id]
         let totWeight = 0
         if (tasks) {
-          for(let i = 0; i<tasks.length; i++){
+          for (let i = 0; i < tasks.length; i++) {
             totWeight += tasks[i].weight
           }
         }
@@ -81,5 +84,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.snow{
+  background-color: snow;
+}
+
+h1{
+  font-size: 30px;
+}
+
+h2{
+  font-size: 15px;
+  font-style: italic;
+}
 
 </style>
