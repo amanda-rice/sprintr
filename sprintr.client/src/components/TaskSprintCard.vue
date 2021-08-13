@@ -1,6 +1,6 @@
 <template>
   <div class="col-12 my-4 border">
-    <div class="row snow">
+    <div class="row snow ">
       <div class="col-12 bg-light">
         <div class="row py-2">
           <div class="col-6 mt-3 d-flex">
@@ -22,9 +22,9 @@
             <p>Status: {{ currentTask.status }}</p>
           </div>
         </div>
-    </div>
-<div class="col-12">
-  <NotesThread :note="note" />
+      </div>
+      <div class="col-12">
+        <NotesThread :note="note" />
       </div>
     </div>
   </div>
@@ -65,7 +65,6 @@ export default {
           state.updateTask.id = props.task.id
           state.updateTask.status = props.task.status
           state.updateTask.backlogItemId = props.task.backlogItemId
-          console.log(state.updateTask, 'updateTask')
           await tasksService.update(state.updateTask)
         } catch (error) {
           Pop.toast(error, 'error')

@@ -1,5 +1,5 @@
 <template>
-  <div class="col-11 py-5 my-3 border snow">
+  <div class="col-11 py-5 my-3 shadow snow">
     <div class="row bg-light">
       <div class="col-6">
         <h1>Backlog Item: {{ backlogItem.name }}</h1>

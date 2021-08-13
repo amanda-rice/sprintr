@@ -111,7 +111,6 @@ export default {
           state.updateTask.id = props.task.id
           state.updateTask.status = props.task.status
           state.updateTask.backlogItemId = props.task.backlogItemId
-          console.log(state.updateTask, 'updateTask')
           if (props.task.sprintId) {
             await tasksService.update(state.updateTask, props.task.sprintId)
           } else {
@@ -128,7 +127,6 @@ export default {
             state.updateTask.sprintId = props.task.sprintId
           }
           state.updateTask.backlogItemId = props.task.backlogItemId
-          console.log(state.updateTask, 'updateTask')
           await tasksService.update(state.updateTask)
         } catch (error) {
           Pop.toast(error, 'error')
