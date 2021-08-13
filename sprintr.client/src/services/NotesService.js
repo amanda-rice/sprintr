@@ -13,6 +13,11 @@ class NotesService {
     const res = await api.get(`api/tasks/${taskId}/notes`)
     AppState.notes[taskId] = res.data
   }
+
+  async destroy(id, taskId) {
+    await api.delete('api/notes/' + id)
+    this.getNotesByTaskId(taskId)
+  }
 }
 
 export const notesService = new NotesService()

@@ -4,7 +4,7 @@
       <div class="col-12 d-flex">
         <h4 class="px-2">
           Task: {{ task.name }}
-          <i class="fa fa-trash text-secondary px-2" aria-hidden="true" title="Delete Note"></i>
+            <i class="fa text-right hoverable fa-trash text-secondary pl-4" aria-hidden="true" title="Delete Task" @click="destroy"></i>
         </h4>
       </div>
       <div class="col-12 d-flex">
@@ -35,15 +35,18 @@
       </div>
       <div class="col-12">
         <p>Status: {{currentTask.status}}</p>
-        <div>
+        <div v-if="sprint[0]">
           <label for="sprint">Assign Sprint: </label>
           <select name="sprint" v-model="state.updateTask.sprintId" @change="setSprint">
             <option v-for="(value, key) in sprint" :key="key" :value="value.id">
               {{ value.name }}
             </option>
           </select>
-          <div v-if="task.sprintId">Current Sprint: {{sprint.find(s=>s.id === task.sprintId).name}}</div>
+          <div v-if="task.sprintId && sprint.find(s=>s.id === task.sprintId)">Current Sprint: {{sprint.find(s=>s.id === task.sprintId).name}}</div>
           <div v-else>Not currently assigned to a sprint</div>
+        </div>
+        <div v-else>
+          <p>No Sprints to assign to</p>
         </div>
       </div>
       <div class="col-12">
@@ -61,6 +64,8 @@ import Pop from '../utils/Notifier'
 import { notesService } from '../services/NotesService'
 import { sprintsService } from '../services/SprintsService'
 import { tasksService } from '../services/TasksService'
+import {useRoute, useRouter} from 'vue-router'
+
 export default {
   props: {
     task: {
@@ -72,8 +77,11 @@ export default {
     onMounted(async() => {
       await notesService.getNotesByTaskId(props.task.id)
     })
+    const route = useRoute()
+    const router = useRouter()  
     const state = reactive({
-      updateTask: {}
+      updateTask: {},
+      projectId: route.params.projectId,
     })
     onMounted(async() => {
       try {
@@ -114,6 +122,16 @@ export default {
           state.updateTask.backlogItemId = props.task.backlogItemId
           console.log(state.updateTask, 'updateTask')
           await tasksService.update(state.updateTask)
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      },
+      async destroy() {
+        try {
+          if (await Pop.confirm()) {
+            await tasksService.destroy(props.task.id, props.task.backlogItemId)
+            Pop.toast('Deleted Task Successfully', 'success')
+          }
         } catch (error) {
           Pop.toast(error, 'error')
         }

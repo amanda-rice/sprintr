@@ -11,12 +11,23 @@
     <div class="mx-3 d-flex align-self-center">
       {{ note.body }}
     </div>
+    <div class="">
+      <i class="fa text-right hoverable fa-trash text-secondary pl-4" aria-hidden="true" title="Delete Note" @click="destroy"></i>
+    </div>
   </div>
 </template>
 
 <script>
 import { reactive, computed } from 'vue'
 import { AppState } from '../AppState'
+import Pop from '../utils/Notifier'
+
+// import { computed, reactive, onMounted } from '@vue/runtime-core'
+// import { AppState } from '../AppState'
+import { notesService } from '../services/NotesService'
+// import { sprintsService } from '../services/SprintsService'
+// import { tasksService } from '../services/TasksService'
+// import {useRoute, useRouter} from 'vue-router'
 
 export default {
   props: {
@@ -33,7 +44,17 @@ export default {
 
     return {
       state,
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      async destroy() {
+        try {
+          if (await Pop.confirm()) {
+            await notesService.destroy(props.note.id, props.note.taskId)
+            Pop.toast('Deleted Note Successfully', 'success')
+          }
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      }
     }
   },
   components: {}

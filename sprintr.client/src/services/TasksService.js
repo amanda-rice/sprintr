@@ -1,6 +1,7 @@
 import { AppState } from '../AppState'
 import { api } from './AxiosService'
 import { backlogItemsService } from './BacklogItemsService'
+import { projectsService } from './ProjectsService'
 import { sprintsService } from './SprintsService'
 
 class TasksService {
@@ -28,6 +29,11 @@ class TasksService {
     if (object.sprintId) {
       await this.getTasksBySprintId(object.sprintId)
     }
+  }
+
+  async destroy(id, backlogId) {
+    await api.delete('api/tasks/' + id)
+    this.getTasksByBacklogItemId(backlogId)
   }
 }
 export const tasksService = new TasksService()

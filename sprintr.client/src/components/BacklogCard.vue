@@ -69,7 +69,7 @@ export default {
         try {
           if (await Pop.confirm()) {
             await backlogItemsService.destroy(props.backlogItem.id)
-            Pop.toast('Deleted Project Successfully', 'success')
+            Pop.toast('Deleted BacklogItem Successfully', 'success')
           }
         } catch (error) {
           Pop.toast(error, 'error')
