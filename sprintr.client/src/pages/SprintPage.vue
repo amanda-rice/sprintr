@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-md-6">
       <h1>{{thisSprint.name}}</h1>
+      <i class="fa text-right hoverable fa-trash text-secondary pl-4" aria-hidden="true" title="Delete Backlog Item" @click="destroy"></i>
       <h2>Task Weight: {{totalWeight}}</h2>
     </div>
     <div class="col-12">
@@ -13,7 +14,7 @@
 
 <script>
 import { reactive, computed, onMounted } from 'vue'
-import {useRoute} from 'vue-router'
+import {useRoute, useRouter} from 'vue-router'
 import {AppState} from '../AppState'
 import {projectsService} from '../services/ProjectsService'
 import {sprintsService} from '../services/SprintsService'
@@ -24,6 +25,7 @@ export default {
   name: 'Component',
   setup() {
     const route = useRoute()
+    const router = useRouter()
     const state = reactive({
       projectId: route.params.projectId,
       sprintId: computed(()=>route.params.sprintId)
@@ -68,6 +70,17 @@ export default {
       async getByProjectId(){
         try {
           await projectsService.getBacklogItemsByProjectId(state.projectId)
+        } catch (error) {
+          Pop.toast(error, 'error')
+        }
+      },
+      async destroy() {
+        try {
+          if (await Pop.confirm()) {
+            await sprintsService.destroy(state.sprintId)
+            router.push({ name: 'Project', params: { projectId: state.projectId } })
+            Pop.toast('Deleted Sprint Successfully', 'success')
+          }
         } catch (error) {
           Pop.toast(error, 'error')
         }
