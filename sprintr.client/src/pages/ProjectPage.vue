@@ -3,14 +3,14 @@
     <div class="row flex-column justify-content-center pt-4">
       <div class="col-12 pl-5 pr-0">
         <router-link :to="{name: 'Project.Backlog'}">
-          <h1>
+          <h1 title="Navigate to Backlog Page">
             Backlog
           </h1>
         </router-link>
       </div>
       <div class="col-12 pl-5 pr-0">
         <router-link :to="{name: 'Project.Settings'}">
-          <h1>
+          <h1 title="Navigate to Settings Page">
             Settings
           </h1>
         </router-link>
@@ -18,7 +18,9 @@
       <div class="col-12 pl-5 pr-0">
         <h1 v-for="(value, key) in sprints" :key="key">
           <router-link :to="{name: 'Project.Sprint', params: {sprintId: value.id}}">
-            <h1>{{ value.name }}</h1>
+            <h1 :title="'Navigate to ' + value.name + ' Page'">
+              {{ value.name }}
+            </h1>
           </router-link>
         </h1>
       </div>
