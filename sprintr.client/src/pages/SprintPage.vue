@@ -7,7 +7,7 @@
       </div>
       <h2>Task Weight: {{totalWeight}}</h2>
     </div>
-    <div class="col-11">
+    <div class="col-11 py=5 my-3 border snow">
       <TaskSprintThread :tasks="tasks" />
     </div>
   </div>

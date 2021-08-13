@@ -1,26 +1,30 @@
 <template>
-  <div class="col-12 my-4">
-    <div class="row">
-      <div class="col-12 d-flex">
-        <h4 class="p-2">
-          Task: {{ task.name }}
-        </h4>
-      </div>
-      <div class="col-12 d-flex">
-        <p class="px-2">
-          <i class="fas fa-weight-hanging text-dark" title="Task Weight"></i> {{ task.weight }}
-        </p>
-      </div>
-      <div class="col-12 mb-3">
-        <button class="btn btn-info text-white" data-toggle="modal" :data-target="'#create-note' + task.id" title="Create New Note">
-          Add Note
-        </button>
-      </div>
-      <div class="col-12">
-        <p>Status: {{ currentTask.status }}</p>
-      </div>
-      <div class="col-12">
-        <NotesThread :note="note" />
+  <div class="col-12 my-4 border">
+    <div class="row snow">
+      <div class="col-12 bg-light">
+        <div class="row py-2">
+          <div class="col-6 mt-3 d-flex">
+            <h4 class="p-2">
+              Task: {{ task.name }}
+            </h4>
+          </div>
+          <div class="col-2 d-flex mt-3">
+            <p class="px-2">
+              <i class="fas fa-weight-hanging text-dark" title="Task Weight"></i> {{ task.weight }}
+            </p>
+          </div>
+          <div class="col-2 mb-3 mt-3">
+            <button class="btn btn-info text-white" data-toggle="modal" :data-target="'#create-note' + task.id" title="Create New Note">
+              Add Note
+            </button>
+          </div>
+          <div class="col-2 mt-3">
+            <p>Status: {{ currentTask.status }}</p>
+          </div>
+        </div>
+    </div>
+<div class="col-12">
+  <NotesThread :note="note" />
       </div>
     </div>
   </div>
@@ -74,5 +78,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.snow{
+  background-color: snow;
+}
 </style>
