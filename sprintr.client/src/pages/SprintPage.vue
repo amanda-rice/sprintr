@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-6">
       <h1>{{thisSprint.name}}</h1>
-      <h2>Task Weight: {{completed}}</h2>
+      <h2>Task Weight: {{totalWeight}}</h2>
     </div>
     <div class="col-12">
       <TaskSprintThread :tasks="tasks" />
@@ -48,7 +48,7 @@ export default {
       backlogItems: computed(()=>AppState.backlogItems),
       activeBacklog: computed(()=>AppState.activeBacklog),
       tasks: computed(()=> AppState.sprintTasks[state.sprintId]),
-      completed: computed(() => {
+      totalWeight: computed(() => {
         const tasks = AppState.sprintTasks[state.sprintId]
         let totWeight = 0
         if (tasks) {

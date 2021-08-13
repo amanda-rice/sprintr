@@ -1,8 +1,10 @@
 <template>
   <div class="col-11 py-5 my-3 border border-primary">
     <div class="row bg-light">
+      
       <div class="col-3">
-        {{ backlogItem.name }}
+       <h1>{{ backlogItem.name }}</h1>
+       <p>Backlog Items Weight: {{totalWeight}}</p>
       </div>
       <div class="col-3">
         {{ completed.length }} / {{ tasks.length }} Tasks Completed
@@ -52,6 +54,16 @@ export default {
           return tasks.filter(t => t.status === 'done')
         }
         return []
+      }),
+      totalWeight: computed(() => {
+        const tasks = AppState.tasks[props.backlogItem.id]
+        let totWeight = 0
+        if (tasks) {
+          for(let i = 0; i<tasks.length; i++){
+            totWeight += tasks[i].weight
+          }
+        }
+        return totWeight
       }),
       async destroy() {
         try {
