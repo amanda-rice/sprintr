@@ -1,37 +1,37 @@
 <template>
-  <aside class="bg-dark w-25 mr-4">
+  <aside class="bg-dark mr-4">
     <div class="row flex-column justify-content-center pt-4">
       <div class="col-12 pl-5 pr-0">
         <router-link :to="{name: 'Project.Backlog'}">
-          <h4>
+          <h1>
             Backlog
-          </h4>
+          </h1>
         </router-link>
       </div>
       <div class="col-12 pl-5 pr-0">
         <router-link :to="{name: 'Project.Settings'}">
-          <h4 class="glowing">
+          <h1 class="glowing">
             Settings
-          </h4>
+          </h1>
         </router-link>
       </div>
       <div class="col-12 pl-5 pr-0">
-        <h4 class="glowing" v-for="(value, key) in sprints" :key="key">
+        <h1 class="glowing" v-for="(value, key) in sprints" :key="key">
           <router-link :to="{name: 'Project.Sprint', params: {sprintId: value.id}}">
             {{ value.name }}
           </router-link>
-        </h4>
+        </h1>
       </div>
       <div class="col-12 pl-5 glowing pr-0">
-        <button class="btn btn-outline-primary" data-toggle="modal" data-target="#create-sprint" title="Create New Sprint">
-          Add Sprint
+        <button class="btn btn-info" data-toggle="modal" data-target="#create-sprint" title="Create New Sprint">
+          + Add Sprint
         </button>
       </div>
-      <div class="col-12 pl-5 pr-0 d-flex">
-        <i class="fa hoverable fa-trash text-secondary pl-4" aria-hidden="true" title="Delete Project" @click="destroy"></i>
-        <h4 class="glowing">
+      <div class="col-12 pl-5 pr-0">
+        <button class="btn btn-secondary hoverable" @click="destroy">
+          <i class="fa fa-trash text-light" aria-hidden="true" title="Delete Project"></i>
           Delete Project
-        </h4>
+        </button>
       </div>
     </div>
 
@@ -98,10 +98,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .glowing:hover {
-//   text-shadow: 0 0 2px black, 0 0 5px whitesmoke,
-//     0 0 5px whitesmoke;
-//   cursor: pointer;
-// }
+h1{
+  color: lavender ;
+  text-shadow: 1px 1px darkslategray;
+  font-size: 25px;
+}
+aside{
+  min-width: 15vw
+}
 
 </style>
