@@ -1,11 +1,13 @@
 <template>
   <div class="row">
     <div class="col-md-6">
-      <h1>{{thisSprint.name}}</h1>
-      <i class="fa text-right hoverable fa-trash text-secondary pl-4" aria-hidden="true" title="Delete Backlog Item" @click="destroy"></i>
+      <div class="d-flex">
+        <h1>{{thisSprint.name}}</h1>
+        <i class="fa text-right hoverable fa-trash fa-2x text-secondary pl-4 pb-0 pt-2" aria-hidden="true" title="Delete Backlog Item" @click="destroy"></i>
+      </div>
       <h2>Task Weight: {{totalWeight}}</h2>
     </div>
-    <div class="col-12">
+    <div class="col-11">
       <TaskSprintThread :tasks="tasks" />
     </div>
   </div>

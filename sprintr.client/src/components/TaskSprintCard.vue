@@ -1,8 +1,8 @@
 <template>
-  <div class="col-12 border border-secondary my-4">
-    <div class="row">
+  <div class="col-12 my-4">
+    <div class="row border border-secondary">
       <div class="col-12 d-flex">
-        <h4 class="px-2">
+        <h4 class="p-2">
           Task: {{ task.name }}
         </h4>
       </div>
@@ -12,7 +12,7 @@
         </p>
       </div>
       <div class="col-12 mb-3">
-        <button class="btn btn-outline-primary" data-toggle="modal" :data-target="'#create-note' + task.id" title="Create New Note">
+        <button class="btn btn-info text-white" data-toggle="modal" :data-target="'#create-note' + task.id" title="Create New Note">
           Add Note
         </button>
       </div>
