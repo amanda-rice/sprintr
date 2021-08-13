@@ -3,7 +3,7 @@
     <div class="row flex-column justify-content-center pt-4">
       <div class="col-12 pl-5 pr-0">
         <router-link :to="{name: 'Project.Backlog'}">
-          <h4 class="glowing">
+          <h4>
             Backlog
           </h4>
         </router-link>
@@ -26,10 +26,12 @@
         <button class="btn btn-outline-primary" data-toggle="modal" data-target="#create-sprint" title="Create New Sprint">
           Add Sprint
         </button>
-      </div >
+      </div>
       <div class="col-12 pl-5 pr-0 d-flex">
         <i class="fa hoverable fa-trash text-secondary pl-4" aria-hidden="true" title="Delete Project" @click="destroy"></i>
-        <h4 class="glowing">Delete Project</h4>
+        <h4 class="glowing">
+          Delete Project
+        </h4>
       </div>
     </div>
 
@@ -60,11 +62,10 @@ export default {
     onMounted(async() => {
       try {
         await projectsService.getSprintsByProjectId(state.projectId)
-        let sprints = AppState.sprints
+        const sprints = AppState.sprints
         sprints.forEach(element => {
           tasksService.getTasksBySprintId(element.id)
-        });
-        
+        })
       } catch (error) {
         Pop.toast(error, 'error')
       }
@@ -73,7 +74,7 @@ export default {
       state,
       activeProject: computed(() => AppState.activeProject),
       sprints: computed(() => AppState.sprints),
-      async getSprints(id){
+      async getSprints(id) {
         try {
           await tasksService.getTasksBySprintId(id)
         } catch (error) {
@@ -90,7 +91,7 @@ export default {
         } catch (error) {
           Pop.toast(error, 'error')
         }
-      },
+      }
     }
   }
 }

@@ -1,9 +1,9 @@
 <template>
   <div class="row justify-content-between comp-thread py-4 my-5">
     <div class="col-6">
-      <h2 class="text-primary">
+      <h1 class="text-primary">
         Projects
-      </h2>
+      </h1>
       <p>all of the projects created by {{ account.email }} </p>
     </div>
     <div class="col-6">
@@ -12,13 +12,13 @@
       </button>
     </div>
     <div class="col-4">
-      <h4><u>Name</u></h4>
+      <h2><u>Name</u></h2>
     </div>
     <div class="col-4">
-      <h4><u>Description</u></h4>
+      <h2><u>Description</u></h2>
     </div>
     <div class="col-4">
-      <h4><u>Started</u></h4>
+      <h2><u>Started</u></h2>
     </div>
     <ProjectsComponent v-for="p in projects" :key="p.id" :project="p" />
   </div>
