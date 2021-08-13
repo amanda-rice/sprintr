@@ -19,9 +19,9 @@
         <div class="modal-body">
           <form @submit.prevent="createBacklogItem">
             <div class="form-group">
-              <label class="pr-2" for="name">Backlog Item Name</label>
+              <label class="pr-2" for="backlog-name">Backlog Item Name</label>
               <input type="text"
-                     id="name"
+                     id="backlog-name"
                      class="form-control"
                      placeholder="Backlog Item Name..."
                      maxlength="50"
@@ -30,9 +30,9 @@
               >
             </div>
             <div class="form-group">
-              <label class="pr-2" for="class">Description</label>
+              <label class="pr-2" for="backlog-description">Description</label>
               <input type="text"
-                     id="description"
+                     id="backlog-description"
                      class="form-control"
                      placeholder="Description..."
                      maxlength="150"
@@ -44,7 +44,7 @@
               <button v-if="state.createBacklogItem" type="submit" class="btn btn-primary mr-3">
                 Save
               </button>
-              <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal" @click="closeModal">
+              <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">
                 Close
               </button>
             </div>

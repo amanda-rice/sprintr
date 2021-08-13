@@ -19,20 +19,20 @@
         <div class="modal-body">
           <form @submit.prevent="createSprint">
             <div class="form-group">
-              <label class="pr-2" for="name">Sprint Name</label>
+              <label class="pr-2" for="sprint-name">Sprint Name</label>
               <input type="text"
-                     id="name"
+                     id="sprint-name"
                      class="form-control"
                      placeholder="Sprint Name..."
-                     maxlength="75"
+                     maxlength="50"
                      required
                      v-model="state.createSprint.name"
               >
             </div>
             <div class="form-group">
-              <label class="pr-2" for="class">Start Date</label>
+              <label class="pr-2" for="sprint-start-date">Start Date</label>
               <input type="date"
-                     id="start-date"
+                     id="sprint-start-date"
                      class="form-control"
                      placeholder="Start Date..."
                      required
@@ -40,9 +40,9 @@
               >
             </div>
             <div class="form-group">
-              <label class="pr-2" for="class">End Date</label>
+              <label class="pr-2" for="sprint-end-date">End Date</label>
               <input type="date"
-                     id="end-date"
+                     id="sprint-end-date"
                      class="form-control"
                      placeholder="End Date..."
                      required
@@ -53,7 +53,7 @@
               <button v-if="state.createSprint" type="submit" class="btn btn-primary mr-3">
                 Save
               </button>
-              <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal" @click="closeModal">
+              <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">
                 Close
               </button>
             </div>

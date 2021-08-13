@@ -10,7 +10,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">
-            New Note
+            Create Note
           </h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -19,9 +19,9 @@
         <div class="modal-body">
           <form @submit.prevent="createNote">
             <div class="form-group">
-              <label class="pr-2" for="body">New Note</label>
+              <label class="pr-2" for="note-body">New Note</label>
               <input type="text"
-                     id="body"
+                     id="note-body"
                      class="form-control"
                      placeholder="Add note..."
                      maxlength="100"
@@ -36,7 +36,7 @@
               <button type="button"
                       class="btn btn-secondary closeModal"
                       data-dismiss="modal"
-                      @click="closeModal"
+                      
               >
                 Close
               </button>

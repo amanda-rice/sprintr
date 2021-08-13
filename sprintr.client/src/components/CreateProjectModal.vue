@@ -19,9 +19,9 @@
         <div class="modal-body">
           <form @submit.prevent="createdProject">
             <div class="form-group">
-              <label class="pr-2" for="name">Project Name</label>
+              <label class="pr-2" for="project-name">Project Name</label>
               <input type="text"
-                     id="name"
+                     id="project-name"
                      class="form-control"
                      placeholder="Project Name..."
                      maxlength="50"
@@ -30,12 +30,12 @@
               >
             </div>
             <div class="form-group">
-              <label class="pr-2" for="class">Description</label>
+              <label class="pr-2" for="project-description">Description</label>
               <input type="text"
-                     id="description"
+                     id="project-description"
                      class="form-control"
                      placeholder="Description..."
-                     maxlength="150"
+                     maxlength="200"
                      required
                      v-model="state.createdProject.description"
               >
@@ -47,7 +47,6 @@
               <button type="button"
                       class="btn btn-secondary closeModal"
                       data-dismiss="modal"
-                      @click="closeModal"
               >
                 Close
               </button>
