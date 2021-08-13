@@ -9,7 +9,7 @@
       <div class="col-md-4 bg-primary text-center glowing my-5">
         <h1>Log in to start Sprinting!</h1>
         <h1>
-          <i class="fas fa-carrot fa-3x text-light text-center m-md-4 my-4 m-0"></i>
+          <i class="fas party fa-carrot fa-3x text-light text-center m-md-4 my-4 m-0"></i>
         </h1>
       </div>
     </div>
@@ -50,5 +50,8 @@ export default {
   }
 .glowing{
  box-shadow: 1px 1px 15px darkslategray;
+}
+.party:hover{
+ text-shadow: 3px 3px 7px rgb(223, 103, 163);
 }
 </style>
