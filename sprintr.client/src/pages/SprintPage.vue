@@ -46,7 +46,7 @@ export default {
   })
     return{
       state,
-      thisSprint: computed(()=>AppState.activeSprint),
+      thisSprint: computed(()=>AppState.sprints.find(s => s.id ===state.sprintId)),
       backlogItems: computed(()=>AppState.backlogItems),
       activeBacklog: computed(()=>AppState.activeBacklog),
       tasks: computed(()=> AppState.sprintTasks[state.sprintId]),
