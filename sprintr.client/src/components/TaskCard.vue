@@ -19,12 +19,13 @@
       </div>
       <div class="col-12">
         <div>
-          <label for="sprints">Assign Sprint:</label>
-          <select name="sprints" v-model="state.updateTask.sprintId" @change="setSprint">
+          <label for="sprint">Assign Sprint: {{sprint}}</label>
+          <select name="sprint" v-model="state.updateTask.sprintId" @change="setSprint">
             <option v-for="(value, key) in sprint" :key="key" :value="value.id">
               {{ value.name }}
             </option>
           </select>
+          {{task}}
         </div>
       </div>
       <div class="col-12">
@@ -71,6 +72,8 @@ export default {
         try {
           state.updateTask.id = props.task.id
           state.updateTask.weight = props.task.weight
+          state.updateTask.backlogItemId = props.task.backlogItemId
+          console.log(state.updateTask, 'updateTask')
           await tasksService.update(state.updateTask)
         } catch (error) {
           Pop.toast(error, 'error')
