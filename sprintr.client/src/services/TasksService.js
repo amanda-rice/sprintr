@@ -8,6 +8,11 @@ class TasksService {
     AppState.tasks[id] = res.data
   }
 
+  async getTasksBySprintId(id) {
+    const res = await api.get(`api/sprints/${id}/tasks`)
+    AppState.tasks[id] = res.data
+  }
+
   async createTask(task) {
     const res = await api.post('api/tasks', task)
     AppState.activeTask = res.data

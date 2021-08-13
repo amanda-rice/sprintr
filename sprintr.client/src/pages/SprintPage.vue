@@ -6,8 +6,10 @@
     <div class="col-md-6">
       <h1>Made it to Sprint Page!</h1>
     </div>
+    <div class="col-12">
+      <TaskSprintThread :tasks="tasks" />
+    </div>
   </div>
-  <CreateBacklogItemModal />
 </template>
 
 
@@ -16,6 +18,7 @@ import { reactive, computed, onMounted } from 'vue'
 import {useRoute} from 'vue-router'
 import {AppState} from '../AppState'
 import {projectsService} from '../services/ProjectsService'
+import {tasksService} from '../services/TasksService'
 import Pop from '../utils/Notifier'
 
 export default {
@@ -28,7 +31,7 @@ export default {
     })
     onMounted(async() => {
     try {
-      await projectsService.getBacklogItemsByProjectId(state.projectId)
+      await tasksService.getTasksBySprintId(state.sprintId)
     } catch (error) {
       Pop.toast(error, 'error')
     }
@@ -37,6 +40,7 @@ export default {
       state,
       backlogItems: computed(()=>AppState.backlogItems),
       activeBacklog: computed(()=>AppState.activeBacklog),
+      tasks: computed(()=> AppState.tasks[state.sprintId]),
       async getByProjectId(){
         try {
           await projectsService.getBacklogItemsByProjectId(state.projectId)
