@@ -26,6 +26,7 @@
                      class="form-control"
                      placeholder="Add task..."
                      maxlength="100"
+                     required
                      v-model="state.createdTask.name"
               >
             </div>
@@ -36,6 +37,7 @@
                      class="form-control"
                      placeholder="Add weight..."
                      max="100"
+                     required
                      v-model="state.createdTask.weight"
               >
             </div>

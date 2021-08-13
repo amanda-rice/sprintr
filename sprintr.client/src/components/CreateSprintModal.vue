@@ -24,7 +24,8 @@
                      id="name"
                      class="form-control"
                      placeholder="Sprint Name..."
-                     maxlength="30"
+                     maxlength="75"
+                     required
                      v-model="state.createSprint.name"
               >
             </div>
@@ -34,6 +35,7 @@
                      id="start-date"
                      class="form-control"
                      placeholder="Start Date..."
+                     required
                      v-model="state.createSprint.startDate"
               >
             </div>
@@ -43,6 +45,7 @@
                      id="end-date"
                      class="form-control"
                      placeholder="End Date..."
+                     required
                      v-model="state.createSprint.endDate"
               >
             </div>

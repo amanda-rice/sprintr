@@ -24,7 +24,8 @@
                      id="name"
                      class="form-control"
                      placeholder="Backlog Item Name..."
-                     maxlength="30"
+                     maxlength="50"
+                     required
                      v-model="state.createBacklogItem.name"
               >
             </div>
@@ -34,7 +35,8 @@
                      id="description"
                      class="form-control"
                      placeholder="Description..."
-                     maxlength="25"
+                     maxlength="150"
+                     required
                      v-model="state.createBacklogItem.body"
               >
             </div>

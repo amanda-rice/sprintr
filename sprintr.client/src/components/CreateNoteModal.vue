@@ -26,6 +26,7 @@
                      class="form-control"
                      placeholder="Add note..."
                      maxlength="100"
+                     required
                      v-model="state.createdNote.body"
               >
             </div>

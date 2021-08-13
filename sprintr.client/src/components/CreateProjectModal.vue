@@ -24,7 +24,8 @@
                      id="name"
                      class="form-control"
                      placeholder="Project Name..."
-                     maxlength="30"
+                     maxlength="50"
+                     required
                      v-model="state.createdProject.name"
               >
             </div>
@@ -34,7 +35,8 @@
                      id="description"
                      class="form-control"
                      placeholder="Description..."
-                     maxlength="25"
+                     maxlength="150"
+                     required
                      v-model="state.createdProject.description"
               >
             </div>
