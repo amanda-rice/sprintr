@@ -9,13 +9,6 @@
         </router-link>
       </div>
       <div class="col-12 pl-5 pr-0">
-        <router-link :to="{name: 'Project.Settings'}">
-          <h1 title="Navigate to Settings Page">
-            Settings
-          </h1>
-        </router-link>
-      </div>
-      <div class="col-12 pl-5 pr-0">
         <h1 v-for="(value, key) in sprints" :key="key">
           <router-link :to="{name: 'Project.Sprint', params: {sprintId: value.id}}">
             <h1 :title="'Navigate to ' + value.name + ' Page'">
