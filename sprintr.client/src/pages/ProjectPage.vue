@@ -10,31 +10,30 @@
       </div>
       <div class="col-12 pl-5 pr-0">
         <router-link :to="{name: 'Project.Settings'}">
-          <h1 class="glowing">
+          <h1>
             Settings
           </h1>
         </router-link>
       </div>
       <div class="col-12 pl-5 pr-0">
-        <h1 class="glowing" v-for="(value, key) in sprints" :key="key">
+        <h1 v-for="(value, key) in sprints" :key="key">
           <router-link :to="{name: 'Project.Sprint', params: {sprintId: value.id}}">
             {{ value.name }}
           </router-link>
         </h1>
       </div>
-      <div class="col-12 pl-5 glowing pr-0">
+      <div class="col-12 pl-5 my-2 glowing pr-0">
         <button class="btn btn-info" data-toggle="modal" data-target="#create-sprint" title="Create New Sprint">
           + Add Sprint
         </button>
       </div>
-      <div class="col-12 pl-5 pr-0">
+      <div class="col-12 pl-5 my-1 pr-0">
         <button class="btn btn-secondary hoverable" @click="destroy">
           <i class="fa fa-trash text-light" aria-hidden="true" title="Delete Project"></i>
           Delete Project
         </button>
       </div>
     </div>
-
     <CreateSprintModal />
   </aside>
 
