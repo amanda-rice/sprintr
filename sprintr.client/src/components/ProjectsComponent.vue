@@ -5,7 +5,7 @@
   <div class="col-3 hoverable" @click="toProjectPage">
     {{ project.description }}
   </div>
-  <div class="col-4 hoverable" @click="toProjectPage">
+  <div class="col-4">
     {{ new Date(project.createdAt).toLocaleString() }}
     <i class="fa hoverable fa-trash text-secondary pl-4" aria-hidden="true" title="Delete Project" @click="destroy"></i>
   </div>
