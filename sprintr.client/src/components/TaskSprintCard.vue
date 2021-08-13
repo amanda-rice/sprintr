@@ -1,6 +1,6 @@
 <template>
-  <div class="col-12 my-4 border snow">
-    <div class="row">
+  <div class="col-12 my-4 border">
+    <div class="row snow">
       <div class="col-12 bg-light">
         <div class="row py-2">
           <div class="col-6 mt-3 d-flex">
@@ -78,5 +78,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.snow{
+  background-color: snow;
+}
 </style>
