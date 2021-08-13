@@ -1,23 +1,22 @@
 <template>
-  <div class="col-12 border border-secondary my-4">
+  <div class="col-12 my-4">
     <div class="row">
-      <div class="col-12 d-flex">
-        <h4 class="px-2">
+      <div class="col-12 lightPink d-flex">
+        <h1 class="px-2">
           Task: {{ task.name }}
-          <i class="fa text-right hoverable fa-trash text-secondary pl-4" aria-hidden="true" title="Delete Task" @click="destroy"></i>
-        </h4>
+          <i class="fas fa-weight-hanging text-dark px-2" title="Task Weight"></i>{{ task.weight }}
+          <i class="fa text-right hoverable fa-trash text-dark px-2" aria-hidden="true" title="Delete Task" @click="destroy"></i>
+        </h1>
       </div>
-      <div class="col-12 d-flex">
-        <p class="px-2">
-          <i class="fas fa-weight-hanging text-dark" title="Task Weight"></i> {{ task.weight }}
-        </p>
-      </div>
-      <div class="col-12 mb-3">
-        <button class="btn btn-outline-primary" data-toggle="modal" :data-target="'#create-note' + task.id" title="Create New Note">
-          Add Note
+      <div class="col-12 my-3">
+        <button class="btn btn-info text-white" data-toggle="modal" :data-target="'#create-note' + task.id" title="Create New Note">
+          + Add Note
         </button>
       </div>
       <div class="col-12">
+        <p>
+          <em>Status: {{ currentTask.status }}</em>
+        </p>
         <select name="status" v-model="state.updateTask.status" @change="setStatus">
           <option value="pending">
             Pending
@@ -33,10 +32,11 @@
           </option>
         </select>
       </div>
-      <div class="col-12">
-        <p>Status: {{ currentTask.status }}</p>
+      <div class="col-12 mt-3">
         <div v-if="sprint[0]">
-          <label for="sprint">Assign Sprint: </label>
+          <p for="sprint">
+            <em>Assign Sprint:</em>
+          </p>
           <select name="sprint" v-model="state.updateTask.sprintId" @change="setSprint">
             <option v-for="(value, key) in sprint" :key="key" :value="value.id">
               {{ value.name }}
@@ -46,11 +46,11 @@
             Current Sprint: {{ sprint.find(s=>s.id === task.sprintId).name }}
           </div>
           <div v-else>
-            Not currently assigned to a sprint
+            <em>This task is not currently assigned to a sprint</em>
           </div>
         </div>
         <div v-else>
-          <p>No Sprints to assign to</p>
+          <p>Create a Sprint to Assign this Task</p>
         </div>
       </div>
       <div class="col-12">
@@ -112,10 +112,9 @@ export default {
           state.updateTask.status = props.task.status
           state.updateTask.backlogItemId = props.task.backlogItemId
           console.log(state.updateTask, 'updateTask')
-          if(props.task.sprintId){
+          if (props.task.sprintId) {
             await tasksService.update(state.updateTask, props.task.sprintId)
-          }
-          else{
+          } else {
             await tasksService.update(state.updateTask)
           }
         } catch (error) {
@@ -152,5 +151,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h1{
+  font-size: 1.5rem;
+}
+
+.lightPink{
+  background-color: lightpink;
+}
 
 </style>
