@@ -5,15 +5,15 @@ import { backlogItemsService } from './BacklogItemsService'
 class TasksService {
   async getTasksByBacklogItemId(id) {
     const res = await api.get(`api/backlogItems/${id}/tasks`)
-    console.log(res.data)
     AppState.tasks[id] = res.data
   }
 
   async createTask(task) {
+    console.log(task)
     const res = await api.post('api/tasks', task)
-    console.log(res, 'create task')
+    console.log(res)
     AppState.activeTask = res.data
-    await backlogItemsService.getTasksByProjectId(task.backlogId)
+    await this.getTasksByBacklogItemId(task.backlogItemId)
     return res.data.id
   }
 

@@ -20,7 +20,6 @@ class BacklogItemsService {
 
   async createBacklogItem(backlogItem) {
     const res = await api.post('api/backlogItems', backlogItem)
-    console.log(res, 'create backlog item')
     AppState.activeBacklog = res.data
     await projectsService.getBacklogItemsByProjectId(backlogItem.projectId)
     return res.data.id
@@ -34,8 +33,6 @@ class BacklogItemsService {
   async getTasksByBacklogItemId(backlogItemId) {
     const res = await api.get('api/backlogItems/' + backlogItemId + '/tasks')
     AppState.backlogItems = res.data
-    console.log(AppState.backlogItems, 'tasks')
-    console.log(res, 'get task by BLID')
   }
 }
 

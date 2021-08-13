@@ -20,7 +20,6 @@ class SprintsService {
 
   async createSprint(sprint) {
     const res = await api.post('api/sprints', sprint)
-    console.log(res, 'create sprint')
     AppState.activeSprint = res.data
     await projectsService.getSprintsByProjectId(sprint.projectId)
     return res.data.id
@@ -34,8 +33,6 @@ class SprintsService {
   async getSprintsByProjectId(sprintId) {
     const res = await api.get('api/projects/' + sprintId + '/sprints')
     AppState.sprints = res.data
-    console.log(AppState.sprints, 'sprint')
-    console.log(res, 'get sprint by ID')
   }
 }
 

@@ -19,7 +19,6 @@ class ProjectsService {
 
   async createProject(project) {
     const res = await api.post('api/projects', project)
-    console.log(res)
     AppState.activeProject = res.data
     await this.getAll()
     return res.data.id
@@ -33,15 +32,11 @@ class ProjectsService {
   async getBacklogItemsByProjectId(projectId) {
     const res = await api.get('api/projects/' + projectId + '/backlogItems')
     AppState.backlogItems = res.data
-    console.log(AppState.backlogItems, 'backlogitems')
-    console.log(res, 'get backlog by ID')
   }
 
   async getSprintsByProjectId(projectId) {
     const res = await api.get('api/projects/' + projectId + '/sprints')
     AppState.sprints = res.data
-    console.log(AppState.sprints, 'backlogitems')
-    console.log(res, 'get backlog by ID')
   }
 }
 

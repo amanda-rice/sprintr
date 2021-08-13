@@ -78,7 +78,6 @@ export default {
       async createBacklogItem() {
         try {
           state.createBacklogItem.projectId = state.projectId
-          console.log(state.createBacklogItem)
           const id = await backlogItemsService.createBacklogItem(state.createBacklogItem)
           state.createBacklogItem = {}
           $('#create-backlog-item').modal('hide')

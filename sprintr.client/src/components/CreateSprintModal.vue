@@ -86,7 +86,6 @@ export default {
       async createSprint() {
         try {
           state.createSprint.projectId = state.projectId
-          console.log(state.createSprint)
           const id = await sprintsService.createSprint(state.createSprint)
           state.createSprint = {}
           $('#create-sprint').modal('hide')

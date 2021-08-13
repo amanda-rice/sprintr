@@ -58,7 +58,7 @@ export default {
     })
     onMounted(async() => {
       try {
-        await sprintsService.getSprintsByProjectId(state.projectId)
+        await sprintsService.getSprintsByProjectId(props.task.projectId)
       } catch (error) {
         Pop.toast(error, 'error')
       }
