@@ -4,12 +4,11 @@
       <div class="col-12 d-flex">
         <h4 class="px-2">
           Task: {{ task.name }}
-          <i class="fa fa-trash text-secondary px-2" aria-hidden="true" title="Delete Note"></i>
         </h4>
       </div>
       <div class="col-12 d-flex">
         <p class="px-2">
-          <i class="fas fa-weight-hanging text-dark" title="Delete Task"></i> {{ task.weight }}
+          <i class="fas fa-weight-hanging text-dark" title="Task Weight"></i> {{ task.weight }}
         </p>
       </div>
       <div class="col-12 mb-3">

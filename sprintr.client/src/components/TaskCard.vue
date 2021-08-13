@@ -9,7 +9,7 @@
       </div>
       <div class="col-12 d-flex">
         <p class="px-2">
-          <i class="fas fa-weight-hanging text-dark" title="Delete Task"></i> {{ task.weight }}
+          <i class="fas fa-weight-hanging text-dark" title="Task Weight"></i> {{ task.weight }}
         </p>
       </div>
       <div class="col-12 mb-3">
